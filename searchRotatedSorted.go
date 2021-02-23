@@ -5,21 +5,19 @@ func search(array []int, target int) int {
       if array[mid] == target {
         return mid
       } else if array[mid] > array[left] {
-          if array[left] < target {
+          if target < array[mid] && array[left] <= target {
             right = mid
           } else {
             left = mid
           }
       } else if array[mid] < array[left] {
-          if array[mid] > target {
-              right = mid
-          } else {
+          if target > array[mid] && target <= array[right] {
               left = mid
+          } else {
+              right = mid
           }
       }
     }
-
-    // loop ends when left and right pointers are next to each other; either could be the result
 
     if array[left] == target {
       return left
